@@ -62,13 +62,13 @@ fake_package <- function(file_name, working_directory = NULL,
 #' @param clean Delete the working directory?
 #' @param runit Convert the text received from the help files if running RUnit?
 #' Do not bother, this is for Unit testing only.
-#' @note One of the main features of 'R CMD check' is checking for 
+#' @note One of the main features of 'R CMD check' is checking for
 #' code/documentation mismatches (it behaves pretty much like doxygen).
 #' No build system can check whether your documentation is useful, but 'R CMD
-#' check' checks if it is formally matching your code. This check is the basic 
-#' idea behind \pkg{document}. The posibility to disable the R CMD check is
-#' there to disable cpu consuming checks while testing the package. Stick with 
-#' the default! 
+#' check' checks if it is formally matching your code. This check is the basic
+#' idea behind \pkg{document}. The possibility to disable the R CMD check is
+#' there to disable CPU consuming checks while testing the package. Stick with
+#' the default!
 #' And do not forget to export your functions using the line\cr
 #' #' @export\cr
 #' if you provide examples.
@@ -82,19 +82,19 @@ fake_package <- function(file_name, working_directory = NULL,
 #' @export
 #' @examples
 #' \donttest{
-#' res <- document(file_name = system.file("tests", "files", "minimal.R", 
-#'                                         package = "document"), 
+#' res <- document(file_name = system.file("tests", "files", "minimal.R",
+#'                                         package = "document"),
 #'                 check_package = FALSE) # this is for the sake of CRAN cpu
 #'                 # time only. _Always_ stick with the default!
-#' 
+#'
 #' # View R CMD check results.
 #' cat(res[["check_result"]][["stdout"]], sep = "\n")
 #' cat(res[["check_result"]][["stderr"]], sep = "\n")
-#' 
+#'
 #' # Copy docmentation to current working directory.
-#' # This writes to your disk, so it's disabled. 
+#' # This writes to your disk, so it's disabled.
 #' # Remove or comment out the next line to enable.
-#' if (FALSE) 
+#' if (FALSE)
 #'     file.copy(res[["pdf_path"]], getwd())
 #' }
 document <- function(file_name,
@@ -160,17 +160,15 @@ write_the_docs <- function(package_directory, file_name,
                            runit = FALSE
                            ) {
     man_directory <- file.path(package_directory, "man")
-    package_name <- basename(package_directory)
-    html_name <- paste0(package_name, ".html")
+    base_name <- sub(".[rRS]$|.Rnw$", "", basename(file_name), perl = TRUE)
+    html_name <- paste0(base_name, ".html")
     html_path <- file.path(output_directory, html_name)
-    pdf_name <- paste0(package_name, ".pdf")
+    pdf_name <- paste0(base_name, ".pdf")
     pdf_path <- file.path(output_directory, pdf_name)
-    txt_name <- paste0(package_name, ".txt")
+    txt_name <- paste0(base_name, ".txt")
     txt_path <- file.path(output_directory, txt_name)
-    # TODO: make status depend on the status of the corresponding call to
-    # rcmd_safe!
-    status <- list(pdf_path = pdf_path, txt_path = txt_path,
-                   html_path = html_path)
+    status <- list(pdf_path = NULL, txt_path = NULL,
+                   html_path = NULL)
     # out_file_name may contain underscores, which need to be escaped for LaTeX.
     file_name_tex <- gsub("_", "\\_", basename(file_name), fixed = TRUE)
     pdf_title <- paste("'Roxygen documentation for file", file_name_tex, "\'")
@@ -180,33 +178,42 @@ write_the_docs <- function(package_directory, file_name,
         pdf_title <- file_name_tex
         # Man dir on windows must be in slashes... at least for R CMD Rd2pdf,
         # again, I have no clue.
-        man_directory <- sub("\\\\", "/", man_directory)
+        man_directory <- gsub("\\\\", "/", man_directory)
     }
     if (! dir.exists(output_directory)) dir.create(output_directory)
     options("document_package_directory" = package_directory)
-    callr::rcmd_safe("Rd2pdf", c("--no-preview --internals --force",
-                                 paste0("--title=", pdf_title),
-                                 paste0("--output=", pdf_path), man_directory))
+    call_pdf <- callr::rcmd_safe("Rd2pdf",
+                                 c("--no-preview --internals --force",
+                                   paste0("--title=", pdf_title),
+                                   paste0("--output=", pdf_path),
+                                   man_directory))
+    if (! as.logical(call_pdf[["status"]])) status[["pdf_path"]]  <- pdf_path
+    files  <- sort_unlocale(list.files(man_directory, full.names = TRUE))
     # using R CMD Rdconv on the system instead of tools::Rd2... since
     # ?tools::Rd2txt states that
     # "These functions ... are mainly intended for internal use, their
     # interfaces are subject to change".
-    Rd_txt <- NULL
-    Rd_html <- NULL
-    files  <- sort_unlocale(list.files(man_directory, full.names = TRUE))
-    for (rd_file in files) {
-        Rd_txt <- c(Rd_txt,
-                    callr::rcmd_safe("Rdconv",
-                                     c("--type=txt", rd_file))[["stdout"]])
-        Rd_html <- c(Rd_html,
-                     callr::rcmd_safe("Rdconv",
-                                      c("--type=html", rd_file))[["stdout"]])
-    }
+    call_txt <- lapply(files,
+                       function(x) callr::rcmd_safe("Rdconv",
+                                                    c("--type=txt", x)))
+    call_html <- lapply(files,
+                        function(x) callr::rcmd_safe("Rdconv",
+                                                     c("--type=html", x)))
+    Rd_txt <- sapply(call_txt, function(x) return(x[["stdout"]]))
+    Rd_html <- sapply(call_html, function(x) return(x[["stdout"]]))
+    status_txt <- sapply(call_txt, function(x) return(x[["status"]]))
+    status_html <- sapply(call_html, function(x) return(x[["status"]]))
+    if (all(! as.logical(status_txt))) status[["txt_path"]]  <- txt_path
+    if (all(! as.logical(status_html))) status[["html_path"]]  <- html_path
+
     if (isTRUE(sanitize_Rd)) Rd_txt <- gsub("_\b", "", Rd_txt, fixed = TRUE)
     if (isTRUE(runit)) Rd_txt <- Rd_txt_RUnit(Rd_txt)
     writeLines(Rd_txt, con = txt_path)
     writeLines(Rd_html, con = html_path)
+    # only return paths for existing files
+    status[! sapply(status, file.exists)] <- NULL
     return(status)
+
 }
 #' A Convenience Wrapper to \code{getOption("document_package_directory")}
 #'

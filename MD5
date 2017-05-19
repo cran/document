@@ -1,9 +1,9 @@
-8d7e48f8169b0c356af3e6c0f79bb3e8 *DESCRIPTION
+10ed7253b28b0f4fef484cad3df8729f *DESCRIPTION
 8f54895584ca5a75bf65ae4d15ab7121 *LICENSE
 29c9964c6ccb9216c6e2be3f049409cd *NAMESPACE
-a699c42fd7ea2766b7c74e70a73f1321 *NEWS.md
+b2936d493277f25d6603a87a0c1d9c5e *NEWS.md
 a4170819ffa32bfd0a9e4faefd29e027 *R/document-package.R
-8b8179550b6caf627ad6737a623d741b *R/document.R
+766e92016d6b0371cc98346e23011b3b *R/document.R
 00d64a1a0dcb63dfdf158d864a14e017 *R/file_parsing.R
 d9ff57c6669dbb2aef1d7ba952cab960 *R/man.R
 c27f5c6e10cfff5fd3639bc97ca057c1 *R/utils.R
@@ -11,9 +11,9 @@ c27f5c6e10cfff5fd3639bc97ca057c1 *R/utils.R
 2d483aa9f7223e0ecf0a89af7c98a774 *build/vignette.rds
 a1f426e35ffba6560ab5c6398fed2b21 *inst/doc/Introduction_to_document.R
 c78267891f84c0082ee1407a1a9fa399 *inst/doc/Introduction_to_document.Rmd
-598e3436bd255d66ed0ac52b74d2e127 *inst/doc/Introduction_to_document.html
+351c16b5f407ea98437dd742e9f45a42 *inst/doc/Introduction_to_document.html
 2badc04b71d33771f044975f9b751aad *inst/tests/README.md
-5fc1beb25e8adc02f7b7765648600084 *inst/tests/document_unit_test.txt
+03781311110080b787abb4c105b8c49a *inst/tests/document_unit_test.txt
 7bc06e47bce03c43f2b65970d0994e61 *inst/tests/expected_files/a_first_function.txt
 bba290ddabb76f7bc6a22476c595596f *inst/tests/expected_files/bar.R
 a4f1f4e8b16e2017dab3d726b30e683e *inst/tests/expected_files/bar_nl.R
@@ -28,6 +28,7 @@ b9fc6e0e12834beae9757ad9d4d16e67 *inst/tests/expected_files/sanitized_a_first_fu
 1b6f329ecbe544e51c08ef28b922f002 *inst/tests/files/err.R
 6e6629736f20b427ff0b01b1337481c7 *inst/tests/files/foo.R
 016660e0aee2409c1b3e32b11998ac5a *inst/tests/files/foobar.R
+b8cc8396c2e9a8a924f743d6d93a2e51 *inst/tests/files/mini_mal.R
 b8cc8396c2e9a8a924f743d6d93a2e51 *inst/tests/files/minimal.R
 4564c76c5adf1d2185315c77aad51698 *inst/tests/files/minimal.html
 1c47348e3f5bceb427666068d0f8406e *inst/tests/files/no_roxy.R
@@ -37,13 +38,13 @@ c8abbe66bf99602a91532a1f76c4d448 *inst/tests/files/warn.R
 34c1eed64ee9a7a991a38aaff5e1cab3 *inst/tests/runit.R
 6a08b43d31d7e19a12c1acd0cb529f6f *inst/tests/runit/expected_files.r
 4c3e854ef44f4b679bbc91434ba6ca36 *inst/tests/testthat.R
-8f8ca662e91d1244e0b7766aac5bc4d4 *inst/tests/testthat/test_basic.R
+607d19d0f1fcf76fd505b7acdd9f2aff *inst/tests/testthat/test_basic.R
 7f60218918b690615dc6caab9b182f5b *man/Rd_txt_RUnit.Rd
 3037f1047fcb51ee9a6be5f1b7a82431 *man/add_dependencies_to_description.Rd
 2028de26c286a7a39fdc162c66d71bbb *man/clean_description.Rd
 a1cd4cf5d25c888992429194c155d868 *man/display_Rd.Rd
 39a6e1db475f398d6fadbf210801bf7a *man/document-package.Rd
-870f7332d7503187b66da243c196a7d5 *man/document.Rd
+c728cdecd1eafca7730f208d0d56d487 *man/document.Rd
 fff7ae2c0cc91a69a06f1209c059d2e2 *man/fake_package.Rd
 12a5537e3e237d78c106524a0eebeeff *man/get_dpd.Rd
 463e6757b3e73faefa7ec1e825a83469 *man/get_lines_between_tags.Rd
@@ -53,7 +54,7 @@ dae86c08fa1274fce540e492f5a82ab2 *man/is_Rd_file.Rd
 31e4c086fb1905e9a9ebde10e29c2a58 *man/usage.Rd
 3147a286390744a02480c458f06a8cea *man/write_the_docs.Rd
 2badc04b71d33771f044975f9b751aad *tests/README.md
-5fc1beb25e8adc02f7b7765648600084 *tests/document_unit_test.txt
+03781311110080b787abb4c105b8c49a *tests/document_unit_test.txt
 7bc06e47bce03c43f2b65970d0994e61 *tests/expected_files/a_first_function.txt
 bba290ddabb76f7bc6a22476c595596f *tests/expected_files/bar.R
 a4f1f4e8b16e2017dab3d726b30e683e *tests/expected_files/bar_nl.R
@@ -68,6 +69,7 @@ b9fc6e0e12834beae9757ad9d4d16e67 *tests/expected_files/sanitized_a_first_functio
 1b6f329ecbe544e51c08ef28b922f002 *tests/files/err.R
 6e6629736f20b427ff0b01b1337481c7 *tests/files/foo.R
 016660e0aee2409c1b3e32b11998ac5a *tests/files/foobar.R
+b8cc8396c2e9a8a924f743d6d93a2e51 *tests/files/mini_mal.R
 b8cc8396c2e9a8a924f743d6d93a2e51 *tests/files/minimal.R
 4564c76c5adf1d2185315c77aad51698 *tests/files/minimal.html
 1c47348e3f5bceb427666068d0f8406e *tests/files/no_roxy.R
@@ -77,5 +79,5 @@ c8abbe66bf99602a91532a1f76c4d448 *tests/files/warn.R
 34c1eed64ee9a7a991a38aaff5e1cab3 *tests/runit.R
 6a08b43d31d7e19a12c1acd0cb529f6f *tests/runit/expected_files.r
 4c3e854ef44f4b679bbc91434ba6ca36 *tests/testthat.R
-8f8ca662e91d1244e0b7766aac5bc4d4 *tests/testthat/test_basic.R
+607d19d0f1fcf76fd505b7acdd9f2aff *tests/testthat/test_basic.R
 c78267891f84c0082ee1407a1a9fa399 *vignettes/Introduction_to_document.Rmd
