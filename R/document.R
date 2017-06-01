@@ -2,9 +2,8 @@
 #'
 #' To build documentation for a single code file, we need a temporary package.
 #' Of course the code file should contain \pkg{roxygen2} comments.
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
 #' @param file_name  The name of the R code file to be documented.
-#' @param dependencies a character vector of package names the functions depend
+#' @param dependencies A character vector of package names the functions depend
 #' on.
 #' @param working_directory A working directory. Keep the default.
 #' @param ... Arguments passed to \code{\link{get_lines_between_tags}}.
@@ -51,33 +50,33 @@ fake_package <- function(file_name, working_directory = NULL,
         add_dependencies_to_description(package_directory, dependencies)
     return(package_directory)
 }
+
 #' Document (Chunks of) an R Code File
 #'
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
 #' @inheritParams fake_package
 #' @inheritParams write_the_docs
-#' @param check_package Run R CMD check on the sources? See
+#' @param check_package Run \command{R CMD check} the sources? See
 #' \bold{Note} below.
-#' @param output_directory The directory to put the documentation into.
 #' @param clean Delete the working directory?
-#' @param runit Convert the text received from the help files if running RUnit?
-#' Do not bother, this is for Unit testing only.
-#' @note One of the main features of 'R CMD check' is checking for
-#' code/documentation mismatches (it behaves pretty much like doxygen).
-#' No build system can check whether your documentation is useful, but 'R CMD
-#' check' checks if it is formally matching your code. This check is the basic
-#' idea behind \pkg{document}. The possibility to disable the R CMD check is
+#' @note One of the main features of \command{R CMD check} is checking for
+#' code/documentation mismatches (it behaves pretty much like
+#' \command{doxygen}).
+#' No build system can check whether your documentation is useful, but
+#' \command{R CMD check}
+#' checks if it is formally matching your code. This check is the basic
+#' idea behind \pkg{document}. The possibility to disable the 
+#' \command{R CMD check} is
 #' there to disable CPU consuming checks while testing the package. Stick with
 #' the default!
 #' And do not forget to export your functions using the line\cr
 #' #' @export\cr
-#' if you provide examples.
+#' should you provide examples.
 #' @return A list containing
 #' \describe{
-#'     \item{pdf_path}{The path to the pdf file produced.}
-#'     \item{txt_path}{The path to the text file produced.}
-#'     \item{html_path}{The path to the html file produced.}
-#'     \item{check_result}{A list giving the R CMD check results.}
+#'     \item{pdf_path}{The path to the pdf file produced,}
+#'     \item{txt_path}{The path to the text file produced,}
+#'     \item{html_path}{The path to the html file produced,}
+#'     \item{check_result}{A list giving the \command{R CMD check} results.}
 #' }
 #' @export
 #' @examples
@@ -140,21 +139,31 @@ document <- function(file_name,
 #' Read R Documentation Files from a Package's Source, Convert and Write Them
 #' to Disk
 #'
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
+#' What does it?
+#'
+#' \code{file_name} will usually be provided by \code{\link{document}} as the
+#' R code file's name. This may, differing from a (temporary) package's name,
+#' contain underscores. If you use the functions directly: stick with the 
+#' default, in which case the internally 
+#' the  \code{\link[base]{basename}} of your \code{package_directory} will be
+#' used. This should be a good guess.
 #' @inheritParams fake_package
+#' @param file_name The name of the file where to write the documentation into. 
+#' See \strong{Details}.
 #' @param package_directory The directory containing the package's source.
-#' @param output_directory The directory to put the documentation into.
-#' @param runit Convert the text received from the help files if running RUnit?
+#' @param output_directory The directory to put the documentation into. You
+#' might want to use \code{\link[base]{dirname}(file_name)}.
 #' @param sanitize_Rd Remove strange characters from \code{Rdconv}?
+#' @param runit Convert the text received from the help files if running
+#' \pkg{RUnit}?
 #' Do not bother, this is for Unit testing only.
-#' on.
 #' @return A list containing
 #' \describe{
 #'     \item{pdf_path}{The path to the pdf file produced.}
 #'     \item{txt_path}{The path to the text file produced.}
 #'     \item{html_path}{The path to the html file produced.}
 #' }
-write_the_docs <- function(package_directory, file_name,
+write_the_docs <- function(package_directory, file_name = package_directory,
                            output_directory = tempdir(),
                            dependencies = NULL, sanitize_Rd = TRUE,
                            runit = FALSE
@@ -215,9 +224,11 @@ write_the_docs <- function(package_directory, file_name,
     return(status)
 
 }
-#' A Convenience Wrapper to \code{getOption("document_package_directory")}
+
+#' A Convenience Wrapper 
 #'
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
+#' Just a wrapper to \code{\link[base]{getOption}("document_package_directory")}
+#'
 #' @return \code{getOption("document_package_directory")}
 #' @export
 get_dpd <- function() return(getOption("document_package_directory"))

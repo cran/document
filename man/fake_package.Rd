@@ -11,7 +11,7 @@ fake_package(file_name, working_directory = NULL, dependencies = NULL, ...)
 
 \item{working_directory}{A working directory. Keep the default.}
 
-\item{dependencies}{a character vector of package names the functions depend
+\item{dependencies}{A character vector of package names the functions depend
 on.}
 
 \item{...}{Arguments passed to \code{\link{get_lines_between_tags}}.}
@@ -26,7 +26,4 @@ Of course the code file should contain \pkg{roxygen2} comments.
 \examples{
 fake_package(file_name = system.file("tests", "files", "simple.R",
          package = "document"))
-}
-\author{
-Andreas Dominik Cullmann, <adc-r@arcor.de>
 }

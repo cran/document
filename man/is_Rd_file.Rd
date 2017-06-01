@@ -2,7 +2,7 @@
 % Please edit documentation in R/man.R
 \name{is_Rd_file}
 \alias{is_Rd_file}
-\title{Check Whether a File is Probably an R documentation file}
+\title{Check Whether a File is Probably an R Documentation File}
 \usage{
 is_Rd_file(x)
 }
@@ -19,7 +19,4 @@ This is meant for internal use by \code{\link{man}}.
 \note{
 The check might produce false negatives (erroneously assuming the file
 is not an R documentation file).
-}
-\author{
-Andreas Dominik Cullmann, <adc-r@arcor.de>
 }

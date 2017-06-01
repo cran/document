@@ -199,23 +199,15 @@ Examples:
 NULL
 # ROXYGEN_STOP
 
-# load packages, load local code, define local functions, set options
-# You should stick to that order: if you define a function of a name which
-# is used as a (function) name in a package you load, you _do_ want your
-# version to mask the packages' version. 
-
-#% load packages
+#% Front Matter
+##% load packages
 library(&quot;methods&quot;) # load an example package from the standard library
 
 
-#% load local code
+##% load local code
 # This would usually be functions defined and stored away in files.
-# For now we just we just create a file containing R options and
-# and then source it.
-cat(file = &quot;tmp.R&quot;, &quot;options(warn = 2) # treat warnings as errors \n&quot;)
-source(&quot;tmp.R&quot;)
 
-#% define local functions
+##% define local functions
 # ROXYGEN_START
 
 #' a first function example XXX
@@ -238,19 +230,17 @@ a_first_function &lt;- function(df) {
 }
 # ROXYGEN_STOP
 
-#% set &quot;global&quot; options
-# We overwrite (mask) the options set from the options file. Had we done
-# it the other way round, we might be tempted to assume warn still to be
-# set to one, albeit it would have been overwritten by the sourced code.
+##% set &quot;global&quot; options
 options(warn = 1)
 
-#% Analysize the data
-colMeans(iris[1:4])
+#% Body Matter
+##% Load data
+data(iris, package = &quot;datasets&quot;)
 
-#% collect garbage 
-# We created a local options file on our file system, which we should
-# remove now.
-file.remove(&quot;tmp.R&quot;)</code></pre>
+##% Analysize the data
+a_first_function(iris)
+
+#% Back Matter</code></pre>
 <p>Then you can write documentation using:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span>document::<span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</code></pre></div>

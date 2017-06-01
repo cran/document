@@ -2,7 +2,7 @@
 % Please edit documentation in R/document.R
 \name{get_dpd}
 \alias{get_dpd}
-\title{A Convenience Wrapper to \code{getOption("document_package_directory")}}
+\title{A Convenience Wrapper}
 \usage{
 get_dpd()
 }
@@ -10,8 +10,5 @@ get_dpd()
 \code{getOption("document_package_directory")}
 }
 \description{
-A Convenience Wrapper to \code{getOption("document_package_directory")}
-}
-\author{
-Andreas Dominik Cullmann, <adc-r@arcor.de>
+Just a wrapper to \code{\link[base]{getOption}("document_package_directory")}
 }

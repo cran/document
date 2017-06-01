@@ -23,19 +23,30 @@ help("document-package", package = "document")
 # 
 # Description:
 # 
-#      Have you ever been tempted to create roxygen2-style documentation
-#      comments for one of your functions that was not part of one of
-#      your packages (yet)? This is exactly what this package is about:
-#      running roxygen2 on (chunks of) a single code file.
-#      You will probably look for 'document' and 'man', the remaining
-#      functions documented here are mainly for internal use.
+#      Have you ever been tempted to create 'roxygen2'-style
+#      documentation comments for one of your functions that was not part
+#      of one of your packages (yet)? This is exactly what this package
+#      is about: running 'roxygen2::roxygenize' on (chunks of) a single
+#      code file.
+#      This package enables you to
+# 
+#        1. create function documentation with 'roxygen2'
+# 
+#        2. detect code/documentation mismatches
+# 
+#        3. save the documentation to disk
+# 
+#        4. view the documentation in your interactive R session
+# 
+#      You will probably be looking for 'document' and 'man', the
+#      remaining functions documented here are mainly for internal use.
 # 
 # Details:
 # 
 #      R is a programming language that supports and checks documentation
-#      for program libraries (called `packages'). The package roxygen2
+#      for program libraries (called `packages'). The package 'roxygen2'
 #      provides a tool for creating documentation from annotated source
-#      code - much like doxygen, javadoc and docstrings/pydoc do.
+#      code - much like 'doxygen', 'javadoc' and 'docstrings/pydoc' do.
 # 
 #      And R is a free software environment for statistical computing and
 #      graphics, used by people like me who start out hacking down code,
@@ -47,35 +58,30 @@ help("document-package", package = "document")
 # 
 #      I am fully aware of the fact that 'roxygen2' is meant to document
 #      packages, not single code chunks. So should you. Nevertheless I
-#      feel the temptation to use roxygen2-style comments in code chunks
-#      that are not part of any package. And to convert them to pdf for
-#      better readability.
+#      feel the temptation to use 'roxygen2'-style comments in code
+#      chunks that are not part of any package. And to convert them to
+#      pdf for better readability.
 # 
 # Warning:
 # 
-#      This package writes to disk, so *NEVER* run it with superuser
-#      powers.
+#      This package writes to disk, so *never* run as superuser.
 # 
 # Note:
 # 
 #      This package is basically a wrapper to
 # 
 #        1. 'roxygen2'. It internally creates a temporary package from
-#           the code files provided (using 'utils::package.skeleton')
-#           which it then passes to roxygen2.
+#           the code file provided (using 'utils::package.skeleton')
+#           which it then passes to 'roxygen2::roxygenize'.
 # 
 #        2. 'R CMD' commands run by 'callr'.
-# 
-# Author(s):
-# 
-#      Andreas Dominik Cullmann, <adc-r@arcor.de>
 # 
 # See Also:
 # 
 #      'docstring' (<URL: https://cran.r-project.org/package=docstring>)
 #      also creates temporary help pages as well but using a different
 #      technical approach (allowing you to view them in the 'RStudio'
-#      help pane). But it creates them from python style docstring-like
+#      help pane). But it creates them from python style 'docstring'-like
 #      comments it then parses into 'roxygen2'. And it does not write to
 #      file so far.
 ```

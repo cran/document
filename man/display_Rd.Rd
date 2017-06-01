@@ -2,7 +2,7 @@
 % Please edit documentation in R/man.R
 \name{display_Rd}
 \alias{display_Rd}
-\title{Display the Contents of an R documentation file}
+\title{Display the Contents of an R Documentation File}
 \usage{
 display_Rd(rd_file)
 }
@@ -10,7 +10,7 @@ display_Rd(rd_file)
 \item{rd_file}{The path to the Rd file to be displayed.}
 }
 \value{
-the return value of removing the temporary file.
+The return value of removing the temporary file.
 }
 \description{
 This is meant for internal use by \code{\link{man}}.
@@ -20,7 +20,4 @@ The Contents are converted to text with \code{Rdconv} and then saved
 to a temporary file which is then displayed using the R pager.
 Using \code{\link{cat}} on the text would not allow for using different
 pagers.
-}
-\author{
-Andreas Dominik Cullmann, <adc-r@arcor.de>
 }

@@ -1,11 +1,15 @@
 #' Display a Help Page From a File's Documentation
 #'
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
+#' Display a \code{\link[utils]{help}}-like page from an existing R 
+#' documentation (*.Rd) file, a topic from a temporary package with the
+#' \code{option("document_package_directory")} set or a topic from an R code
+#' file containing \pkg{roxygen2} documentation.
+#'
 #' @param x One of the following:
 #' \itemize{
 #'     \item A path to an R documentation (*.Rd) file.
 #'     \item A path to a  code file containing comments for \pkg{roxygen2}.
-#'     \item A help \code{\link{help}} if
+#'     \item A  \code{\link{help}} topic if
 #'     \code{option("document_package_directory")} is set (by
 #'     \code{\link{document}}).
 #' }
@@ -60,8 +64,10 @@ man <- function(x, topic = NA, force_Rd = FALSE) {
 }
 
 #' Return the Usage of a Function From Within the Function
+#' 
+#' Get a usage template for a function from within the function if you encounter
+#' misguided usage, you can display the template.
 #'
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
 #' @param n A negative integer giving the number of from to frames/environments
 #' to go back (passed as \code{which} to \code{\link{sys.call}}). Set to
 #' \code{-2} if you want to encapsulate the call to \code{usage} into a function
@@ -69,6 +75,7 @@ man <- function(x, topic = NA, force_Rd = FALSE) {
 #' want to obtain the usage for.
 #' Use the \code{<-} assignment operator with the default, see \bold{examples}
 #' below.
+#' @param usage Give this functions usage (as a usage example \ldots) and exit? 
 #' @return A character string giving the Usage as \code{\link{help}} would do.
 #' @export
 #' @examples
@@ -84,20 +91,21 @@ man <- function(x, topic = NA, force_Rd = FALSE) {
 #'     message(usage(n = -2))
 #' }
 #' bar()
-usage <- function(n = -1) {
+usage <- function(n = -1, usage = FALSE) {
+    if (isTRUE(usage))
+        stop("Usage: ", usage(n = -2))
     calling_function <- as.list(sys.call(which = n))[[1]]
-    useage <- trimws(sub("^function ", deparse(calling_function),
+    usage <- trimws(sub("^function ", deparse(calling_function),
              deparse(args(as.character(calling_function)))[1]))
-    return(useage)
+    return(usage)
 }
 
-#' Check Whether a File is Probably an R documentation file
+#' Check Whether a File is Probably an R Documentation File
 #'
 #' This is meant for internal use by \code{\link{man}}.
 #'
 #' @note The check might produce false negatives (erroneously assuming the file
 #' is not an R documentation file).
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
 #' @return TRUE if the file is probably an R documentation file, FALSE
 #' otherwise.
 #' @param x The path to the file to be checked.
@@ -118,7 +126,7 @@ is_Rd_file <- function(x) {
     return(status)
 }
 
-#' Display the Contents of an R documentation file
+#' Display the Contents of an R Documentation File
 #'
 #' This is meant for internal use by \code{\link{man}}.
 #'
@@ -127,8 +135,7 @@ is_Rd_file <- function(x) {
 #' Using \code{\link{cat}} on the text would not allow for using different
 #' pagers.
 #'
-#' @author Andreas Dominik Cullmann, <adc-r@@arcor.de>
-#' @return the return value of removing the temporary file.
+#' @return The return value of removing the temporary file.
 #' @param rd_file The path to the Rd file to be displayed.
 display_Rd <- function(rd_file) {
     rd_out <- callr::rcmd_safe("Rdconv",
