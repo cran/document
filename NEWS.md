@@ -1,6 +1,11 @@
+# document 1.2.1
+
+* Check for RStudio in man().
+* Fix return status of write_the_docs().
+
 # document 1.2.0
 
-* enhance documenation
+* Enhance documenation.
 
 # document 1.1.0
 
