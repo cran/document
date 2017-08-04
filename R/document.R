@@ -1,55 +1,3 @@
-#' Fake a Package From a Single Code File
-#'
-#' To build documentation for a single code file, we need a temporary package.
-#' Of course the code file should contain \pkg{roxygen2} comments.
-#' @param file_name  The name of the R code file to be documented.
-#' @param dependencies A character vector of package names the functions depend
-#' on.
-#' @param working_directory A working directory. Keep the default.
-#' @param ... Arguments passed to \code{\link{get_lines_between_tags}}.
-#' @return A string containing the path to the faked package.
-#' @export
-#' @examples
-#' fake_package(file_name = system.file("tests", "files", "simple.R",
-#'          package = "document"))
-fake_package <- function(file_name, working_directory = NULL,
-                         dependencies = NULL, ...) {
-    checkmate::assertCharacter(dependencies, null.ok = TRUE)
-    # Work around default here to stay below line with of 80:
-    if (is.null(working_directory))
-        working_directory <- file.path(tempdir(),
-                                       basename(tempfile(pattern = "")))
-    package_name <- gsub("_", ".",
-                         sub(".[rRS]$|.Rnw$", "", basename(file_name),
-                             perl = TRUE)
-                         )
-    package_directory <- file.path(working_directory, package_name)
-    man_directory <- file.path(package_directory, "man")
-    dir.create(working_directory, showWarnings = FALSE, recursive = TRUE)
-    roxygen_code <- get_lines_between_tags(file_name, ...)
-    if (is.null(roxygen_code) || ! any(grepl("^#+'", roxygen_code))) {
-        warning("Couldn't find roxygen comments in file ", file_name, ".")
-    }
-    # need a hard coded basename here to ensure not replicating the input code
-    # if faking for the same code file again.
-    code_file <- file.path(working_directory, "code.R")
-    writeLines(roxygen_code, con = code_file)
-    suppressMessages(utils::package.skeleton(code_files = code_file,
-                                             name = package_name,
-                                             path = working_directory,
-                                             force = TRUE))
-    file.remove(code_file)
-    # roxygen2 does not overwrite files not written by roxygen2, so we need to
-    # delete some files
-    file.remove(list.files(man_directory, full.names = TRUE))
-    file.remove(file.path(package_directory, "NAMESPACE"))
-    #% create documentation from roxygen comments for the package
-    dev_null <- utils::capture.output(roxygen2::roxygenize(package.dir =
-                                                           package_directory))
-    if (! is.null(dependencies))
-        add_dependencies_to_description(package_directory, dependencies)
-    return(package_directory)
-}
 
 #' Document (Chunks of) an R Code File
 #'
@@ -57,14 +5,18 @@ fake_package <- function(file_name, working_directory = NULL,
 #' @inheritParams write_the_docs
 #' @param check_package Run \command{R CMD check} the sources? See
 #' \bold{Note} below.
+#' @param check_as_cran Use the \command{--as-cran} flag with
+#' \command{R CMD check}?
+#' @param stop_on_check_not_passing Stop if \command{R CMD check} does not pass?
 #' @param clean Delete the working directory?
+#' @param debug For internal use only: Summarize errors for \command{travis}?
 #' @note One of the main features of \command{R CMD check} is checking for
 #' code/documentation mismatches (it behaves pretty much like
 #' \command{doxygen}).
 #' No build system can check whether your documentation is useful, but
 #' \command{R CMD check}
 #' checks if it is formally matching your code. This check is the basic
-#' idea behind \pkg{document}. The possibility to disable the 
+#' idea behind \pkg{document}. The possibility to disable the
 #' \command{R CMD check} is
 #' there to disable CPU consuming checks while testing the package. Stick with
 #' the default!
@@ -100,7 +52,9 @@ document <- function(file_name,
                      working_directory = NULL,
                      output_directory = tempdir(),
                      dependencies = NULL, sanitize_Rd = TRUE, runit = FALSE,
-                     check_package = TRUE, clean = FALSE, ...) {
+                     check_package = TRUE, check_as_cran = check_package,
+                     stop_on_check_not_passing = TRUE, clean = FALSE,
+                     debug = TRUE, ...) {
     if (is.null(working_directory))
         working_directory <- file.path(tempdir(),
                                        paste0("document_",
@@ -123,15 +77,13 @@ document <- function(file_name,
                              dependencies = dependencies,
                              sanitize_Rd = sanitize_Rd, runit = runit)
     if (check_package) {
-        # Get rid of one of R CMD checks' NOTEs
-        file.remove(file.path(package_directory, "Read-and-delete-me"))
-        clean_description(package_directory)
-        # Use devtools::build to build in the package_directory.
-        tgz <- devtools::build(package_directory, quiet = TRUE)
-        # devtools::check's return value is crap, so use R CMD check via callr.
-        tmp <- callr::rcmd_safe("check",
-                                c(paste0("--output=", working_directory), tgz))
-        status[["check_result"]] <- tmp
+        check <- check_package(package_directory = package_directory,
+                               working_directory = working_directory,
+                               check_as_cran = check_as_cran,
+                               debug = debug,
+                               stop_on_check_not_passing =
+                                   stop_on_check_not_passing)
+        status[["check_result"]] <- check
     }
     return(status)
 }
@@ -143,12 +95,12 @@ document <- function(file_name,
 #'
 #' \code{file_name} will usually be provided by \code{\link{document}} as the
 #' R code file's name. This may, differing from a (temporary) package's name,
-#' contain underscores. If you use the functions directly: stick with the 
-#' default, in which case the internally 
+#' contain underscores. If you use the functions directly: stick with the
+#' default, in which case the internally
 #' the  \code{\link[base]{basename}} of your \code{package_directory} will be
 #' used. This should be a good guess.
 #' @inheritParams fake_package
-#' @param file_name The name of the file where to write the documentation into. 
+#' @param file_name The name of the file where to write the documentation into.
 #' See \strong{Details}.
 #' @param package_directory The directory containing the package's source.
 #' @param output_directory The directory to put the documentation into. You
@@ -225,7 +177,7 @@ write_the_docs <- function(package_directory, file_name = package_directory,
 
 }
 
-#' A Convenience Wrapper 
+#' A Convenience Wrapper
 #'
 #' Just a wrapper to \code{\link[base]{getOption}("document_package_directory")}
 #'
