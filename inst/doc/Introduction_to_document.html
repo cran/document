@@ -51,7 +51,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 <h1 class="title toc-ignore">Introduction to <em>document</em></h1>
 <h4 class="author"><em>Andreas Dominik Cullmann</em></h4>
-<h4 class="date"><em>2017-08-04, 00:12:17</em></h4>
+<h4 class="date"><em>2017-08-16, 13:01:28</em></h4>
 
 
 
@@ -153,8 +153,8 @@ Examples:
 <div id="checking-the-code-with-r-cmd-check" class="section level3">
 <h3>Checking the code with R CMD check</h3>
 <p>By default, <code>document</code> checks the temporary package it creates from your code file using <strong>R CMD check</strong>. The corresponding call would be:</p>
-<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">document</span>(<span class="dt">file_name =</span> <span class="kw">system.file</span>(<span class="st">&quot;tests&quot;</span>, <span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>, 
-                                        <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>), 
+<pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">document</span>(<span class="dt">file_name =</span> <span class="kw">system.file</span>(<span class="st">&quot;tests&quot;</span>, <span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>,
+                                        <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>),
                 <span class="dt">check_package =</span> <span class="ot">TRUE</span>)</code></pre>
 <p>After that you could display the check results with:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(res[[<span class="st">&quot;check_result&quot;</span>]][[<span class="st">&quot;stdout&quot;</span>]], <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
