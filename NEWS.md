@@ -1,3 +1,12 @@
+# document 2.2.0
+
+* Marked *alter\_descprition\_file()* as deprecated, please use CRAN package 
+  `desc` by Gabor Csardi instead.  
+  Internally, *alter\_descprition\_file()* is not used any longer. 
+  It just lingers as it was exported in version 2.1.0.
+* *alter\_descprition\_file()* now keeps whitespace, making it possible to pass 
+  newline characters, for example for the Authors@R field.
+
 # document 2.1.0
 
 * Fix *man()* to now work with RStudio.
