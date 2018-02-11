@@ -1,8 +1,8 @@
 #' Display a Help Page From a File's Documentation
 #'
 #' Display a \code{\link[utils]{help}}-like page from an existing R
-#' documentation (*.Rd) file, a topic from a temporary package with the
-#' \code{option("document_package_directory")} set or a topic from an R code
+#' documentation (*.Rd) file, a topic from a temporary package with 
+#' \code{options("document_package_directory")} set or a topic from an R code
 #' file containing \pkg{roxygen2} documentation.
 #'
 #' @param x One of the following:
@@ -10,7 +10,7 @@
 #'     \item A path to an R documentation (*.Rd) file.
 #'     \item A path to a  code file containing comments for \pkg{roxygen2}.
 #'     \item A  \code{\link{help}} topic if
-#'     \code{option("document_package_directory")} is set (by
+#'     \code{options("document_package_directory")} is set (by
 #'     \code{\link{document}}).
 #' }
 #' @param topic A \code{\link{help}} topic if \code{x} is a path to a code file
@@ -24,11 +24,11 @@
 #' @export
 #' @examples
 #' \donttest{
-#' document(file_name = system.file("tests", "files", "minimal.R",
-#'          package = "document"), check_package = FALSE)
-#' man("foo")
+#' document::document(file_name = system.file("files", "minimal.R",
+#'                    package = "document"), check_package = FALSE)
+#' document::man("foo")
 #' # this equivalent to
-#' path <- system.file("tests", "files", "minimal.R", package = "document")
+#' path <- system.file("files", "minimal.R", package = "document")
 #' document::man(x = path, topic = "foo")
 #' }
 man <- function(x, topic = NA, force_Rd = FALSE) {
@@ -65,7 +65,8 @@ man <- function(x, topic = NA, force_Rd = FALSE) {
 
 #' Return the Usage of a Function From Within the Function
 #'
-#' Get a usage template for a function from within the function if you encounter
+#' Get a usage template for a function from within the function. If you
+#' encounter
 #' misguided usage, you can display the template.
 #'
 #' @param n A negative integer giving the number of from to frames/environments
@@ -106,9 +107,10 @@ usage <- function(n = -1, usage = FALSE) {
 #'
 #' @note The check might produce false negatives (erroneously assuming the file
 #' is not an R documentation file).
+#' @param x The path to the file to be checked.
 #' @return TRUE if the file is probably an R documentation file, FALSE
 #' otherwise.
-#' @param x The path to the file to be checked.
+#' @keywords internal
 is_Rd_file <- function(x) {
     has_ext <-  grepl("\\.Rd$", x)
     lines <- readLines(x)
@@ -135,8 +137,9 @@ is_Rd_file <- function(x) {
 #' Using \code{\link{cat}} on the text would not allow for using different
 #' pagers.
 #'
-#' @return The return value of removing the temporary file.
 #' @param rd_file The path to the Rd file to be displayed.
+#' @return The return value of removing the temporary file.
+#' @keywords internal
 display_Rd <- function(rd_file) {
     if (.Platform$GUI == "RStudio") {
         status <- rstudioapi::previewRd(rd_file)
