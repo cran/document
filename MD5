@@ -1,9 +1,9 @@
-0897e6957815f69699156ccc84968590 *DESCRIPTION
+2d0642f1008d41bfb0f35fb4d8077814 *DESCRIPTION
 8f54895584ca5a75bf65ae4d15ab7121 *LICENSE
 956ceffae328df49282078228b50daa4 *NAMESPACE
-2c5679c2c492d3d9dac7c9f550c290de *NEWS.md
+7e657fe2c28ac82ebfeaa692b680c585 *NEWS.md
 f8557ca5a753233ad0685e3aedc1e4ca *R/document-package.R
-36ddb7a1dd85bcda2e0b67f6f4e06d96 *R/document.R
+b471586497462eee86f609a19d2b0817 *R/document.R
 2b5c680b476e8ac4ade83ee864d04862 *R/file_parsing.R
 661dd1a5e55aafcd573c26c6ddb3af7e *R/internals.R
 3b72826d3b9d4682f2451383ac3035e6 *R/man.R
@@ -11,9 +11,9 @@ f8557ca5a753233ad0685e3aedc1e4ca *R/document-package.R
 78c9685ca06252765fd79e3a064a4aa4 *R/utils.R
 2c903594b3f96212c10edc0a077faf31 *README.md
 feabf497af1cc619e09b34739f907219 *build/vignette.rds
-d09268c8540e377036db4fe3e862e05d *inst/doc/Introduction_to_document.R
-39060366038b38f121ac33b0853f1d5e *inst/doc/Introduction_to_document.Rmd
-007996ddaaf70259dac0345e5b836c13 *inst/doc/Introduction_to_document.html
+de2f2941ce607a91b1f783ee0d9d0729 *inst/doc/Introduction_to_document.R
+162d46b91ba2b4e114ba03389adab321 *inst/doc/Introduction_to_document.Rmd
+d04ee2b5f237a9c4cd4614c5b7ea72bb *inst/doc/Introduction_to_document.html
 7bc06e47bce03c43f2b65970d0994e61 *inst/expected_files/a_first_function.txt
 bba290ddabb76f7bc6a22476c595596f *inst/expected_files/bar.R
 a4f1f4e8b16e2017dab3d726b30e683e *inst/expected_files/bar_nl.R
@@ -61,4 +61,4 @@ c62a8e1611368a3b25a69a9d8fc939c8 *man/sort_unlocale.Rd
 8c62a708e8da370eeb26090645c82519 *tests/testthat/test_basic.R
 4de54de86df9b0d264c66fa3f2bf3068 *tests/testthat/test_check.R
 c87ee9c248e20cd11353882ca9f4ba4a *tests/testthat/test_parse.R
-39060366038b38f121ac33b0853f1d5e *vignettes/Introduction_to_document.Rmd
+162d46b91ba2b4e114ba03389adab321 *vignettes/Introduction_to_document.Rmd
