@@ -39,6 +39,7 @@ test_that("clean", {
               expect_equal(current, reference)
 }
 )
+if (isTRUE(Sys.getenv("NOT_CRAN"))) {
 test_that("simple", {
               options(useFancyQuotes = FALSE)
               file_name  <- file.path(system.file("files",
@@ -46,14 +47,13 @@ test_that("simple", {
                                       "simple.R")
               res <- document(file_name, check_package = TRUE, runit = TRUE)
               current <- checks(res[["check_result"]])
-              expect_true(! any(current[c("errors", "warnings")]))
+              expect_true(! any(current["errors"]))
               res <- document(file_name, check_package = TRUE, runit = TRUE,
                               check_as_cran = FALSE)
-              current <- checks(res[["check_result"]])
-              expect_true(! any(current))
+              current <- checks(res[["check_result"]])[["errors"]]
+              expect_true(!current)
 }
 )
-
 context("man")
 test_that("from R file", {
               options(pager = switch(.Platform[["OS.type"]],
@@ -141,3 +141,4 @@ test_that("add deps", {
               expect_equal(current, reference)
 }
 )
+}

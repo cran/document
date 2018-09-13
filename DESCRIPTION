@@ -1,6 +1,6 @@
 Package: document
 Title: Run 'roxygen2' on (Chunks of) Single Code Files
-Version: 3.0.1
+Version: 3.0.2
 Authors@R: person(given = c("Andreas", "Dominik"), family = "Cullmann",
     email = "adc-r@arcor.de", role = c("aut","cre"))
 Description: Have you ever been tempted to create 'roxygen2'-style documentation
@@ -17,10 +17,10 @@ Imports: roxygen2, callr, rcmdcheck, checkmate, rstudioapi, desc, withr
 Suggests: knitr, rmarkdown, devtools, RUnit, testthat, datasets,
         rprojroot, covr
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 NeedsCompilation: no
-Packaged: 2018-03-20 10:51:24 UTC; qwer
+Packaged: 2018-09-13 08:20:39 UTC; qwer
 Author: Andreas Dominik Cullmann [aut, cre]
 Maintainer: Andreas Dominik Cullmann <adc-r@arcor.de>
 Repository: CRAN
-Date/Publication: 2018-03-20 11:03:25 UTC
+Date/Publication: 2018-09-13 08:50:03 UTC
