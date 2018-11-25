@@ -19,7 +19,7 @@
 #' need to tag any lines if you keep from_first_line and to_last_line both TRUE:
 #' in this case the whole file will be returned.
 #' @return A character vector of matching lines.
-#' @export 
+#' @export
 get_lines_between_tags <- function(file_name, keep_tagged_lines = TRUE,
                          begin_pattern = "ROXYGEN_START",
                          end_pattern = "ROXYGEN_STOP",
@@ -69,10 +69,13 @@ get_lines_between_tags <- function(file_name, keep_tagged_lines = TRUE,
                                         end_line_indices, sep = ":"),
                         collapse = ","), ")]")
     selected_lines <- eval(parse(text = t))
-        if (! keep_tagged_lines) {
-            pattern_lines <- grep(paste0(begin_pattern, "|", end_pattern),
+    if (! keep_tagged_lines) {
+        pattern <- paste0(begin_pattern, "|", end_pattern)
+        if (any(grepl(pattern, selected_lines))) {
+            pattern_lines <- grep(pattern,
                                   selected_lines)
             selected_lines <- selected_lines[- pattern_lines]
         }
+    }
     return(selected_lines)
 }

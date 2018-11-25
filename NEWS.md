@@ -1,3 +1,7 @@
+# document 3.1.0
+
+* Now deleting tagged lines only if there are any.
+
 # document 3.0.2
 
 * Patched failing "CRAN Package Check Results for Package document".
