@@ -1,10 +1,10 @@
 ---
-title: "Introduction to *document*"
+title: "An Introduction to *document*"
 author: "Andreas Dominik Cullmann"
-date: 2018-03-19, 08:45:39
+date: 2020-01-09, 22:23:13
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to document}
+  %\VignetteIndexEntry{An Introduction to document}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -24,7 +24,7 @@ This package enables you to
  - save the documentation to disk
  - view the documentation in your interactive R session
 
-It does this by creating a temporary package from (the chunks of) your single 
+It does so by creating a temporary package from (the chunks of) your single 
 code file. It runs **R CMD check** to see if your code and
 documentation match.
 For the sake of cpu time on CRAN, I have disabled that check in all 

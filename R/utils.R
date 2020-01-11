@@ -37,8 +37,7 @@ sort_unlocale <- function(char) {
 #' @return value of \code{\link{write.dcf}}.
 #' @keywords internal
 alter_description_file <- function(path, substitution = NULL, addition = NULL) {
-    warning("alter_description_file() is deprecated, ",
-            "please use CRAN package `desc`!")
+    .Deprecated("CRAN package `desc`")
     status  <- 0
     if (is.list(substitution)) substitution <- unlist(substitution)
     if (is.list(addition)) addition <- unlist(addition)

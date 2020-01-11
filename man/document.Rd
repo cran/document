@@ -4,12 +4,20 @@
 \alias{document}
 \title{Document (Chunks of) an R Code File}
 \usage{
-document(file_name, working_directory = NULL,
-  output_directory = tempdir(), dependencies = NULL,
-  sanitize_Rd = TRUE, runit = FALSE, check_package = TRUE,
+document(
+  file_name,
+  working_directory = NULL,
+  output_directory = tempdir(),
+  dependencies = NULL,
+  sanitize_Rd = TRUE,
+  runit = FALSE,
+  check_package = TRUE,
   check_as_cran = check_package,
-  stop_on_check_not_passing = check_package, clean = FALSE,
-  debug = TRUE, ...)
+  stop_on_check_not_passing = check_package,
+  clean = FALSE,
+  debug = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file_name}{The name of the R code file to be documented.}
@@ -79,8 +87,8 @@ res <- document(file_name = system.file("files", "minimal.R",
 
 # View R CMD check results. If we had set check_package to TRUE in the above
 # example, we now could retrieve the check results via:
-cat(res[["check_result"]][["output"]][["stdout"]], sep = "\\n")
-cat(res[["check_result"]][["output"]][["stderr"]], sep = "\\n")
+cat(res[["check_result"]][["output"]][["stdout"]], sep = "\n")
+cat(res[["check_result"]][["output"]][["stderr"]], sep = "\n")
 
 # Copy docmentation to current working directory.
 # This writes to your disk, so it's disabled.

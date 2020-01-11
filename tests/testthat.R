@@ -1,6 +1,6 @@
 running_on_my_machines <- function() {
     sys_info <- Sys.info()
-    r <- sys_info[["nodename"]] %in% c("h7") &&
+    r <- sys_info[["nodename"]] %in% c("h6", "h7") &&
         sys_info[["effective_user"]] == "qwer" &&
         .Platform[["OS.type"]] == "unix"
     return(r)

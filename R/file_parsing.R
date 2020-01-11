@@ -19,6 +19,7 @@
 #' need to tag any lines if you keep from_first_line and to_last_line both TRUE:
 #' in this case the whole file will be returned.
 #' @return A character vector of matching lines.
+#' @keywords internal
 #' @export
 get_lines_between_tags <- function(file_name, keep_tagged_lines = TRUE,
                          begin_pattern = "ROXYGEN_START",

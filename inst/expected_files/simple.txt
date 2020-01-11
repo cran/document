@@ -15,10 +15,6 @@ Note:
      nothing to do with the R statements below. Usually this is not
      intended.
 
-Author(s):
-
-     Dominik Cullmann <adc-r@arcor.de>
-
 
 a first function example XXX
 
@@ -38,10 +34,6 @@ Arguments:
 Value:
 
      NULL. This is no good.
-
-Author(s):
-
-     Dominik Cullmann <adc-r@arcor.de>
 
 Examples:
 

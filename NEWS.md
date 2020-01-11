@@ -1,3 +1,8 @@
+# document 3.2.0
+
+* Tagged docs for `get_dpd` and `get_lines_between_tags` as internal.
+* README.Rmd now links to gitlab.com
+
 # document 3.1.0
 
 * Now deleting tagged lines only if there are any.

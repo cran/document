@@ -4,9 +4,14 @@
 \alias{get_lines_between_tags}
 \title{Cut Code Chunks From a File}
 \usage{
-get_lines_between_tags(file_name, keep_tagged_lines = TRUE,
-  begin_pattern = "ROXYGEN_START", end_pattern = "ROXYGEN_STOP",
-  from_first_line = TRUE, to_last_line = TRUE)
+get_lines_between_tags(
+  file_name,
+  keep_tagged_lines = TRUE,
+  begin_pattern = "ROXYGEN_START",
+  end_pattern = "ROXYGEN_STOP",
+  from_first_line = TRUE,
+  to_last_line = TRUE
+)
 }
 \arguments{
 \item{file_name}{The name of the R code file to be parsed.}
@@ -39,3 +44,4 @@ not
 need to tag any lines if you keep from_first_line and to_last_line both TRUE:
 in this case the whole file will be returned.
 }
+\keyword{internal}

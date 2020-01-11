@@ -4,9 +4,14 @@
 \alias{write_the_docs}
 \title{Write Documentation to Disk}
 \usage{
-write_the_docs(package_directory, file_name = package_directory,
-  output_directory = tempdir(), dependencies = NULL,
-  sanitize_Rd = TRUE, runit = FALSE)
+write_the_docs(
+  package_directory,
+  file_name = package_directory,
+  output_directory = tempdir(),
+  dependencies = NULL,
+  sanitize_Rd = TRUE,
+  runit = FALSE
+)
 }
 \arguments{
 \item{package_directory}{The directory containing the package's source.}

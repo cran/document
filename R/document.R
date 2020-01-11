@@ -185,5 +185,6 @@ write_the_docs <- function(package_directory, file_name = package_directory,
 #' Just a wrapper to \code{\link[base]{getOption}("document_package_directory")}
 #'
 #' @return \code{getOption("document_package_directory")}
+#' @keywords internal
 #' @export
 get_dpd <- function() return(getOption("document_package_directory"))

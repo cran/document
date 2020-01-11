@@ -1,7 +1,7 @@
-if (isTRUE(Sys.getenv("NOT_CRAN"))) {
+if (isTRUE(as.logical(Sys.getenv("NOT_CRAN")))) {
 library(testthat)
 if (interactive()) {
-    devtools::load_all()
+    pkgload::load_all()
 } else {
     library("document")
 }

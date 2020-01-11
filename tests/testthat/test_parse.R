@@ -1,4 +1,4 @@
-if (isTRUE(Sys.getenv("NOT_CRAN"))) {
+if (isTRUE(as.logical(Sys.getenv("NOT_CRAN")))) {
 library(testthat)
 if (interactive()) {
     devtools::load_all()
@@ -82,7 +82,7 @@ test_that("no tagged lines", {
               path <- system.file("files", "minimal.R",
                                   package = "document")
               current <- glbt(path, keep_tagged_lines = FALSE)
-              expect_equal(current, character(0))
+              expect_equal(current, readLines(path))
 }
 )
 test_that("no tagged lines, not_from", {

@@ -4,8 +4,13 @@
 \alias{check_package}
 \title{Run \command{R CMD check} on a Package Directory}
 \usage{
-check_package(package_directory, working_directory, check_as_cran = TRUE,
-  stop_on_check_not_passing = FALSE, debug = TRUE)
+check_package(
+  package_directory,
+  working_directory,
+  check_as_cran = TRUE,
+  stop_on_check_not_passing = FALSE,
+  debug = TRUE
+)
 }
 \arguments{
 \item{package_directory}{The directory containing the package's source.}
