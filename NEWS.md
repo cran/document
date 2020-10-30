@@ -1,6 +1,13 @@
+# document 3.3.0
+
+* Fixed failing test on r-patched-solaris-x86 by adding and exporting test
+  helper functions `is_running_on_fvafrcu_machines()`,
+  `is_running_on_gitlab_com()`, `set_RUN_R_TESTS()` and
+  `get_RUN_R_TESTS()'. The docs of which are internal.
+
 # document 3.2.0
 
-* Tagged docs for `get_dpd` and `get_lines_between_tags` as internal.
+* Tagged docs for `get_dpd()` and `get_lines_between_tags()` as internal.
 * README.Rmd now links to gitlab.com
 
 # document 3.1.0

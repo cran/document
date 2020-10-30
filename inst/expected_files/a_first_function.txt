@@ -17,10 +17,6 @@ _V_a_l_u_e:
 
      NULL. This is no good.
 
-_A_u_t_h_o_r(_s):
-
-     Dominik Cullmann <adc-r@arcor.de>
-
 _E_x_a_m_p_l_e_s:
 
      data(iris, package = "datasets")
