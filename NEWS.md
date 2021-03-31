@@ -1,3 +1,13 @@
+# document 3.3.1
+
+
+* Fixed failing tests on CRAN:
+  `callr::rcmd_safe` calls `R CMD Rdconv --type=txt` mysteriously fail 
+  (it cuts examples off), so we now test against `--type=html`,
+  which keeps working.
+  We now use `tools::Rd2txt` instead of `callr::rcmd_safe`.
+* Now importing package `fritools`, where the functions from 3.3.0 now live.
+
 # document 3.3.0
 
 * Fixed failing test on r-patched-solaris-x86 by adding and exporting test

@@ -1,4 +1,4 @@
-if (document::get_RUN_R_TESTS()) {
+if (fritools::get_run_r_tests()) {
     library(testthat)
     if (interactive()) {
         pkgload::load_all()
@@ -33,10 +33,10 @@ if (document::get_RUN_R_TESTS()) {
                                           "simple.R")
                   expected_file <- file.path(system.file("expected_files",
                                                          package = "document"),
-                                             "simple.txt")
+                                             "simple.html")
 
                   res <- document(file_name, clean = TRUE, runit = TRUE)
-                  current <- readLines(res[["txt_path"]])
+                  current <- readLines(res[["html_path"]])
                   reference  <- readLines(expected_file)
                   expect_equal(current, reference)
     }

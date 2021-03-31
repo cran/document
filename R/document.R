@@ -153,27 +153,35 @@ write_the_docs <- function(package_directory, file_name = package_directory,
                                 )
     if (! as.logical(call_pdf[["status"]])) status[["pdf_path"]]  <- pdf_path
     files  <- sort_unlocale(list.files(man_directory, full.names = TRUE))
+    call_html <- lapply(files,
+                        function(x) callr::rcmd_safe("Rdconv",
+                                                     c("--type=html", x)))
+    status_html <- sapply(call_html, function(x) return(x[["status"]]))
+    Rd_html <- sapply(call_html, function(x) return(x[["stdout"]]))
+    if (all(!as.logical(status_html))) status[["html_path"]]  <- html_path
+    writeLines(Rd_html, con = html_path)
     # using R CMD Rdconv on the system instead of tools::Rd2... since
     # ?tools::Rd2txt states that
     # "These functions ... are mainly intended for internal use, their
     # interfaces are subject to change".
-    call_txt <- lapply(files,
-                       function(x) callr::rcmd_safe("Rdconv",
-                                                    c("--type=txt", x)))
-    call_html <- lapply(files,
-                        function(x) callr::rcmd_safe("Rdconv",
-                                                     c("--type=html", x)))
-    Rd_txt <- sapply(call_txt, function(x) return(x[["stdout"]]))
-    Rd_html <- sapply(call_html, function(x) return(x[["stdout"]]))
-    status_txt <- sapply(call_txt, function(x) return(x[["status"]]))
-    status_html <- sapply(call_html, function(x) return(x[["status"]]))
-    if (all(! as.logical(status_txt))) status[["txt_path"]]  <- txt_path
-    if (all(! as.logical(status_html))) status[["html_path"]]  <- html_path
+    if (FALSE) {
+        call_txt <- lapply(files,
+                           function(x) callr::rcmd_safe("Rdconv",
+                                                        c("--type=txt", x)))
+        Rd_txt <- sapply(call_txt, function(x) return(x[["stdout"]]))
+        status_txt <- sapply(call_txt, function(x) return(x[["status"]]))
+        if (all(! as.logical(status_txt))) status[["txt_path"]]  <- txt_path
+    } else {
+        # FIXME: the above does not work anymore?!
+        Rd_txt <- lapply(files,
+                         function(x) utils::capture.output(tools::Rd2txt(x)))
+        Rd_txt <- unlist(Rd_txt)
+        status[["txt_path"]]  <- txt_path
+    }
 
     if (isTRUE(sanitize_Rd)) Rd_txt <- gsub("_\b", "", Rd_txt, fixed = TRUE)
     if (isTRUE(runit)) Rd_txt <- Rd_txt_RUnit(Rd_txt)
     writeLines(Rd_txt, con = txt_path)
-    writeLines(Rd_html, con = html_path)
     # only return paths for existing files
     status[! sapply(status[! sapply(status, is.null)], file.exists)] <- NULL
     return(status)

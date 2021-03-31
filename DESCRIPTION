@@ -1,6 +1,6 @@
 Package: document
 Title: Run 'roxygen2' on (Chunks of) Single Code Files
-Version: 3.3.0
+Version: 3.3.1
 Authors@R: person(given = c("Andreas", "Dominik"), family = "Cullmann",
     email = "fvafrcu@mailbox.org", role = c("aut","cre"))
 Description: Have you ever been tempted to create 'roxygen2'-style documentation
@@ -12,15 +12,14 @@ Depends: R (>= 3.3.0)
 License: BSD_2_clause + file LICENSE
 URL: https://gitlab.com/fvafrCU/document
 Encoding: UTF-8
-LazyData: true
 Imports: callr, checkmate, desc, rcmdcheck, roxygen2, rstudioapi, withr
-Suggests: knitr, rmarkdown, devtools, RUnit, testthat, pkgload,
-        datasets, rprojroot, covr
+Suggests: covr, datasets, devtools, fritools, knitr, pkgload,
+        rmarkdown, rprojroot, RUnit, testthat
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2020-10-30 17:03:12 UTC; qwer
+Packaged: 2021-03-31 13:01:11 UTC; qwer
 Author: Andreas Dominik Cullmann [aut, cre]
 Maintainer: Andreas Dominik Cullmann <fvafrcu@mailbox.org>
 Repository: CRAN
-Date/Publication: 2020-10-30 17:20:02 UTC
+Date/Publication: 2021-03-31 13:40:03 UTC

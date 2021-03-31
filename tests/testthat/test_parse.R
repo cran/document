@@ -1,4 +1,4 @@
-if (document::get_RUN_R_TESTS()) {
+if (fritools::get_run_r_tests()) {
     library(testthat)
     if (interactive()) {
         devtools::load_all()
