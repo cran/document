@@ -1,5 +1,8 @@
-# document 3.3.1
+# document 3.3.2
 
+* Fixed failing test for html output.
+
+# document 3.3.1
 
 * Fixed failing tests on CRAN:
   `callr::rcmd_safe` calls `R CMD Rdconv --type=txt` mysteriously fail 

@@ -1,7 +1,7 @@
-1c0a79429cd5a5aae64901daf375911e *DESCRIPTION
+df12175560885b98c0e32171c1547ce9 *DESCRIPTION
 2e562f598285368f0874203edd598c65 *LICENSE
 956ceffae328df49282078228b50daa4 *NAMESPACE
-0f4fc3f30f8eb6f9a87eacd8c91f1741 *NEWS.md
+8bb5ebfd14d3e7e59bb994ff248f796a *NEWS.md
 f8557ca5a753233ad0685e3aedc1e4ca *R/document-package.R
 ae1641b035b0bf3ba27579be7f3e5919 *R/document.R
 656c2da671b45da6642cb2aea8376d08 *R/file_parsing.R
@@ -10,7 +10,7 @@ ae1641b035b0bf3ba27579be7f3e5919 *R/document.R
 9d8f99e015ef159d7888dabaca796bab *R/package_functions.R
 0de47d4d02af76210846f60068ae9511 *R/utils.R
 4fdf1513f17b84fe6751a6d9cd1f5b28 *README.md
-822afa5b244dc4b1839fd64fe19d2fd4 *build/vignette.rds
+96cb0de8f14d06b5b426d668bb408e4e *build/vignette.rds
 31959fdf8ed045ea697fb01e7f84042d *inst/doc/Introduction_to_document.R
 a1ecf2a15b7fe4ba88829cf534959a3b *inst/doc/Introduction_to_document.Rmd
 1407b21584a74ecbdd020a3863220479 *inst/doc/Introduction_to_document.html
@@ -31,12 +31,12 @@ df2f275373147fb4545d453a82fcac3a *inst/expected_files/foobar.R
 016660e0aee2409c1b3e32b11998ac5a *inst/files/foobar.R
 b8cc8396c2e9a8a924f743d6d93a2e51 *inst/files/mini_mal.R
 b8cc8396c2e9a8a924f743d6d93a2e51 *inst/files/minimal.R
-4564c76c5adf1d2185315c77aad51698 *inst/files/minimal.html
+5c4ef0786011c421175ee541980b8dd6 *inst/files/minimal.html
 1c47348e3f5bceb427666068d0f8406e *inst/files/no_roxy.R
 6e6629736f20b427ff0b01b1337481c7 *inst/files/notags.R
 c8abbe66bf99602a91532a1f76c4d448 *inst/files/produce_warning.R
 8a7120f87a3cbf161dcc0f48dbf949ce *inst/files/simple.R
-bd4808c2189907b885e6d516ea9423d5 *inst/runit_tests/expected_files.r
+0dc87af64d52b6ff5ef977b374e63ef0 *inst/runit_tests/expected_files.r
 594a51da96f1148d6c423e741bbe77f2 *man/Rd_txt_RUnit.Rd
 e1dc37c63f1a511334612c341b4766b4 *man/alter_description_file.Rd
 bba8d70785131f437a6ab6e3d9a1c2a5 *man/check_package.Rd
@@ -59,7 +59,7 @@ d6d746030b39125b8a6ff350c964ce63 *man/write_the_docs.Rd
 7f58a289020cb53eb65372c0533f2281 *tests/runit.R
 e8d868ee394d132d4cf046f43c091d8a *tests/testthat.R
 0235bfbcef62a72a8e75edaf377256a0 *tests/testthat/fixme_test_check.txt
-93e91028a16d87605303d788726c94a6 *tests/testthat/test_basic.R
+3d87bf961608b4425103693dbe7a0eb0 *tests/testthat/test_basic.R
 c10f8f85eafb0246204d8b2460b569ba *tests/testthat/test_check.R
 1e4a4c674da58f540940426a64212efc *tests/testthat/test_parse.R
 a1ecf2a15b7fe4ba88829cf534959a3b *vignettes/Introduction_to_document.Rmd
