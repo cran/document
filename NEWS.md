@@ -1,3 +1,7 @@
+# document 3.3.3
+
+* Fixed test for html output failing on CRAN.
+
 # document 3.3.2
 
 * Fixed failing test for html output.

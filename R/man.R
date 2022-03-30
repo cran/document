@@ -1,7 +1,7 @@
 #' Display a Help Page From a File's Documentation
 #'
 #' Display a \code{\link[utils]{help}}-like page from an existing R
-#' documentation (*.Rd) file, a topic from a temporary package with 
+#' documentation (*.Rd) file, a topic from a temporary package with
 #' \code{options("document_package_directory")} set or a topic from an R code
 #' file containing \pkg{roxygen2} documentation.
 #'

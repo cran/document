@@ -15,6 +15,35 @@
 
 <title>An Introduction to document</title>
 
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -26,6 +55,7 @@
     </style>
 
 
+
 <style type="text/css">
   code {
     white-space: pre;
@@ -35,26 +65,27 @@
   }
 </style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -63,9 +94,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -343,39 +374,39 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="a-minimal-example" class="section level2">
 <h2>A Minimal Example</h2>
 <p>Suppose you have a script</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">cat</span>(<span class="kw">readLines</span>(path), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a></code></pre></div>
-<pre><code>#' Nothing Good For
-#'
-#' Just prints &quot;foo!&quot;.
-#' @author Your Name &lt;you@@somewhe.re&gt; 
-#' @param x Not needed.
-#' @return NULL
-#' @export
-#' @examples
-#' foo(x = 2)
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(path), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>#&#39; Nothing Good For
+#&#39;
+#&#39; Just prints &quot;foo!&quot;.
+#&#39; @author Your Name &lt;you@@somewhe.re&gt;
+#&#39; @param x Not needed.
+#&#39; @return NULL
+#&#39; @export
+#&#39; @examples
+#&#39; foo(x = 2)
 foo &lt;- function(x) {
     print(&quot;foo!&quot;)
     return(invisible(NULL))
 }
 
-#' Uhh
-#'
-#' Just prints &quot;bar!&quot;.
-#' @author Your Name &lt;you@@somewhe.re&gt; 
-#' @return NULL
-#' @export
-#' @examples
-#' bar()
+#&#39; Uhh
+#&#39;
+#&#39; Just prints &quot;bar!&quot;.
+#&#39; @author Your Name &lt;you@@somewhe.re&gt;
+#&#39; @return NULL
+#&#39; @export
+#&#39; @examples
+#&#39; bar()
 bar &lt;- function() {
     print(&quot;bar!&quot;)
     return(invisible(NULL))
 }</code></pre>
 <p>Then</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">d &lt;-<span class="st"> </span>document<span class="op">::</span><span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>d &lt;-<span class="st"> </span>document<span class="op">::</span><span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <pre><code>## Warning: roxygen2 requires Encoding: UTF-8</code></pre>
 <p>creates a Portable Document Format <a href="https://en.wikipedia.org/wiki/Portable_Document_Format">(pdf)</a> file, an Hypertext Markup Language <a href="https://en.wikipedia.org/wiki/HTML">(html)</a> file and a <a href="https://en.wikipedia.org/wiki/Plain_text">plain text</a> file. The plain text reads</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>Uhh
 
 Description:
@@ -432,18 +463,18 @@ cat(res[[&quot;check_result&quot;]][[&quot;output&quot;]][[&quot;stderr&quot;]],
 <div id="a-simple-example" class="section level2">
 <h2>A Simple Example</h2>
 <p>Suppose you have a script</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;simple.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="kw">cat</span>(<span class="kw">readLines</span>(path), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;simple.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(path), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>#!/usr/bin/Rscript --vanilla
-#' \emph{File} simple.R
-#'
-#' Provide a simple example of a file using roxygen and standard R comments.
-#'
-#' @note This header will show up in the documentation, but it's got nothing to
-#' do with the R statements below. Usually this is not intended.
-#' @section Warning: DO NOT CHANGE THE FOLLWOWING THREE LINES.
-#' @docType data
-#' @name A Header for
+#&#39; \emph{File} simple.R
+#&#39;
+#&#39; Provide a simple example of a file using roxygen and standard R comments.
+#&#39;
+#&#39; @note This header will show up in the documentation, but it&#39;s got nothing to
+#&#39; do with the R statements below. Usually this is not intended.
+#&#39; @section Warning: DO NOT CHANGE THE FOLLWOWING THREE LINES.
+#&#39; @docType data
+#&#39; @name A Header for
 NULL
 # ROXYGEN_STOP
 
@@ -458,16 +489,16 @@ library(&quot;methods&quot;) # load an example package from the standard library
 ##% define local functions
 # ROXYGEN_START
 
-#' a first function example XXX
-#'
-#' This really is just an example, the function prints \code{utils::head()} and
-#' \code{utils::str()} of the given \code{data.frame}.
-#' @param df Name of a data.frame to ... do whatever needs to be done. 
-#' @return NULL. This is no good. 
-#' @export
-#' @examples
-#' data(iris, package = &quot;datasets&quot;)
-#' a_first_function(iris)
+#&#39; a first function example XXX
+#&#39;
+#&#39; This really is just an example, the function prints \code{utils::head()} and
+#&#39; \code{utils::str()} of the given \code{data.frame}.
+#&#39; @param df Name of a data.frame to ... do whatever needs to be done.
+#&#39; @return NULL. This is no good.
+#&#39; @export
+#&#39; @examples
+#&#39; data(iris, package = &quot;datasets&quot;)
+#&#39; a_first_function(iris)
 a_first_function &lt;- function(df) {
     message(paste(&quot;# Structure of&quot;, deparse(substitute(df)), &quot;:&quot;))
     utils::str(df)
@@ -489,9 +520,9 @@ a_first_function(iris)
 
 #% Back Matter</code></pre>
 <p>Then you can write documentation using:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">d &lt;-<span class="st"> </span>document<span class="op">::</span><span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>d &lt;-<span class="st"> </span>document<span class="op">::</span><span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <pre><code>## Warning: roxygen2 requires Encoding: UTF-8</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>_File_ simple.R
 
 Description:
@@ -505,7 +536,7 @@ Warning:
 
 Note:
 
-     This header will show up in the documentation, but it's got
+     This header will show up in the documentation, but it&#39;s got
      nothing to do with the R statements below. Usually this is not
      intended.
 
@@ -514,7 +545,7 @@ a first function example XXX
 Description:
 
      This really is just an example, the function prints
-     'utils::head()' and 'utils::str()' of the given 'data.frame'.
+     &#39;utils::head()&#39; and &#39;utils::str()&#39; of the given &#39;data.frame&#39;.
 
 Usage:
 
@@ -538,8 +569,8 @@ Examples:
 <div id="displaying-temporary-help-files" class="section level1">
 <h1>Displaying Temporary Help Files</h1>
 <p>You can display the help page for one of the documented functions using</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</a>
-<a class="sourceLine" id="cb16-2" title="2">document<span class="op">::</span><span class="kw">man</span>(<span class="dt">x =</span> path, <span class="dt">topic =</span> <span class="st">&quot;foo&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>document<span class="op">::</span><span class="kw">man</span>(<span class="dt">x =</span> path, <span class="dt">topic =</span> <span class="st">&quot;foo&quot;</span>)</span></code></pre></div>
 <pre><code>Nothing Good For
 
 Description:

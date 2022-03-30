@@ -13,10 +13,10 @@ Rd_txt_RUnit(txt)
 The sanitized character vector.
 }
 \description{
-Why am I doing this? It want to run \pkg{RUnit} tests from within 
+Why am I doing this? It want to run \pkg{RUnit} tests from within
 \command{R CMD check}
 check and interactively.
-Files produced are compared with expected files. 
+Files produced are compared with expected files.
 Now \command{R CMD check} and interactive (and batch) runs of \pkg{RUnit}
 give different encodings.
 I don't know why, but they do. And this is a rather lousy fix. See the code

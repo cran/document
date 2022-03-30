@@ -27,7 +27,7 @@ sort_unlocale <- function(char) {
 #'
 #' @inheritParams clean_description_file
 #' @param substitution A list of named character vector giving the pairs for
-#' substitution. 
+#' substitution.
 #' @param addition A list of named character vector giving the pairs for
 #' addition.
 #' @note Adding NULL elements (Title = NULL, for example) to substitution
@@ -55,8 +55,8 @@ alter_description_file <- function(path, substitution = NULL, addition = NULL) {
 
 #' Make a Default DESCRIPTION File Pass \command{R CMD check}
 #'
-#' \code{utils::\link[utils]{package.skeleton}} leaves us with a DESCRIPTION 
-#' that throws a warning in \command{R CMD check}. Fix that. 
+#' \code{utils::\link[utils]{package.skeleton}} leaves us with a DESCRIPTION
+#' that throws a warning in \command{R CMD check}. Fix that.
 #' @param path Path to the DESCRIPTION file or the directory containing it.
 #' @return Invisibly NULL.
 #' @keywords internal
@@ -64,7 +64,7 @@ alter_description_file <- function(path, substitution = NULL, addition = NULL) {
 #' if (! exists("dummy")) assign("dummy", "dumb")
 #' utils::package.skeleton(path = tempdir())
 #' old <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
-#' document:::clean_description_file(path = file.path(tempdir(), "anRpackage", 
+#' document:::clean_description_file(path = file.path(tempdir(), "anRpackage",
 #'                                         "DESCRIPTION"))
 #' new <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
 #' setdiff(new, old)
@@ -80,10 +80,10 @@ clean_description_file <- function(path) {
 
 #' Clean a String Created From a Run Through \pkg{RUnit}
 #'
-#' Why am I doing this? It want to run \pkg{RUnit} tests from within 
+#' Why am I doing this? It want to run \pkg{RUnit} tests from within
 #' \command{R CMD check}
 #' check and interactively.
-#' Files produced are compared with expected files. 
+#' Files produced are compared with expected files.
 #' Now \command{R CMD check} and interactive (and batch) runs of \pkg{RUnit}
 #' give different encodings.
 #' I don't know why, but they do. And this is a rather lousy fix. See the code

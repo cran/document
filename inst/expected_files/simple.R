@@ -16,8 +16,8 @@ NULL
 #'
 #' This really is just an example, the function prints \code{utils::head()} and
 #' \code{utils::str()} of the given \code{data.frame}.
-#' @param df Name of a data.frame to ... do whatever needs to be done. 
-#' @return NULL. This is no good. 
+#' @param df Name of a data.frame to ... do whatever needs to be done.
+#' @return NULL. This is no good.
 #' @export
 #' @examples
 #' data(iris, package = "datasets")

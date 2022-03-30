@@ -4,7 +4,7 @@ print("foo")
 #' Nothing Good For
 #'
 #' Just prints "foo!".
-#' @author Your Name <you@@somewhe.re> 
+#' @author Your Name <you@@somewhe.re>
 #' @param x Not needed.
 #' @return NULL
 #' @examples
@@ -21,7 +21,7 @@ print("foobar")
 #' Uhh
 #'
 #' Just prints "bar!".
-#' @author Your Name <you@@somewhe.re> 
+#' @author Your Name <you@@somewhe.re>
 #' @return NULL
 #' @examples
 #' bar()

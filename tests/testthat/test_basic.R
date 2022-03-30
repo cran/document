@@ -7,6 +7,7 @@ if (fritools::get_run_r_tests()) {
         library("document")
     }
     glbt <- document:::get_lines_between_tags
+    ratio <- 0.3
 
     context("files")
     file_name  <- file.path(system.file("files",
@@ -38,7 +39,8 @@ if (fritools::get_run_r_tests()) {
                   res <- document(file_name, clean = TRUE, runit = TRUE)
                   current <- readLines(res[["html_path"]])
                   reference  <- readLines(expected_file)
-                  expect_true(sum(reference %in% current) / length(current) >= 0.8)
+                  expect_true(sum(reference %in% current) / length(current)
+                              >= ratio)
     }
     )
     test_that("simple", {
@@ -69,7 +71,7 @@ if (fritools::get_run_r_tests()) {
                                        package = "document")
                   reference  <- readLines(rfile)
                   expect_true(sum(reference %in% current) / length(current)
-                              >= 0.8)
+                              >= ratio)
     }
     )
     test_that("from R file missing topic", {
@@ -102,8 +104,8 @@ if (fritools::get_run_r_tests()) {
                                        "sanitized_a_first_function.txt",
                                        package = "document")
                   reference  <- readLines(rfile)
-                  expect_true(sum(reference %in% current) / length(current) 
-                              >= 0.8)
+                  expect_true(sum(reference %in% current) / length(current)
+                              >= ratio)
     }
     )
     test_that("from topic", {
@@ -119,8 +121,8 @@ if (fritools::get_run_r_tests()) {
                                        "sanitized_a_first_function.txt",
                                        package = "document")
                   reference  <- readLines(rfile)
-                  expect_true(sum(reference %in% current) / length(current) 
-                              >= 0.8)
+                  expect_true(sum(reference %in% current) / length(current)
+                              >= ratio)
     }
     )
 

@@ -3,7 +3,7 @@
 #' Have you ever been tempted to create \pkg{roxygen2}-style documentation
 #' comments
 #' for one of your functions that was not part of one of your packages (yet)?
-#' This is exactly what this package is about: running 
+#' This is exactly what this package is about: running
 #' \code{\link[roxygen2:roxygenize]{roxygen2::roxygenize}} on (chunks of)
 #' a single code file.\cr
 #' This package enables you to
@@ -13,8 +13,8 @@
 #' \item save the documentation to disk
 #' \item view the documentation in your interactive R session
 #' }
-#' You will probably be looking for \code{\link{document}} and 
-#' \code{\link{man}}, the remaining functions are mainly 
+#' You will probably be looking for \code{\link{document}} and
+#' \code{\link{man}}, the remaining functions are mainly
 #' for internal use.
 #'
 #' R is a programming language that supports and checks documentation for
@@ -39,7 +39,7 @@
 #'     \item \pkg{roxygen2}. It internally creates a temporary package from the
 #'      code file provided (using
 #'      \code{\link[utils:package.skeleton]{utils::package.skeleton}})
-#'      which it then passes to 
+#'      which it then passes to
 #'      \code{\link[roxygen2:roxygenize]{roxygen2::roxygenize}}.
 #'     \item \command{R CMD} commands run by \pkg{callr}.
 #' }

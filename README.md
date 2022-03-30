@@ -1,8 +1,8 @@
 ---
 output: github_document
 ---
-[![pipeline status](https://gitlab.com/fvafrCU/document/badges/master/pipeline.svg)](https://gitlab.com/fvafrCU/document/commits/master)    
-[![coverage report](https://gitlab.com/fvafrCU/document/badges/master/coverage.svg)](https://gitlab.com/fvafrCU/document/commits/master)
+[![pipeline status](https://gitlab.com/fvafrCU/document/badges/master/pipeline.svg)](https://gitlab.com/fvafrCU/document/-/commits/master)    
+[![coverage report](https://gitlab.com/fvafrCU/document/badges/master/coverage.svg)](https://gitlab.com/fvafrCU/document/-/commits/master)
 <!-- 
     [![Build Status](https://travis-ci.org/fvafrCU/document.svg?branch=master)](https://travis-ci.org/fvafrCU/document)
     [![Coverage Status](https://codecov.io/github/fvafrCU/document/coverage.svg?branch=master)](https://codecov.io/github/fvafrCU/document?branch=master)

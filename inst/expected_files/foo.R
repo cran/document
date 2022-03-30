@@ -1,7 +1,7 @@
 #' Nothing Good For
 #'
 #' Just prints "foo!".
-#' @author Your Name <you@@somewhe.re> 
+#' @author Your Name <you@@somewhe.re>
 #' @param x Not needed.
 #' @return NULL
 #' @examples
