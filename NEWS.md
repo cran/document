@@ -1,3 +1,7 @@
+# document 3.3.4
+
+* Using suggested packages conditionally only.
+
 # document 3.3.3
 
 * Fixed test for html output failing on CRAN.

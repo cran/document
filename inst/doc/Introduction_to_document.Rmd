@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to *document*"
 author: "Andreas Dominik Cullmann"
-date: 2020-01-09, 22:23:13
+date: 2022-08-17, 09:21:00
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{An Introduction to document}
@@ -10,10 +10,10 @@ vignette: >
 ---
 
 # Teaser
-Have you ever been tempted to create roxygen2-style documentation comments for 
+Have you ever been tempted to create roxygen2-style documentation comments for
 one of your functions that was not part of one of your packages (yet)?
 
-This is exactly what this package is about: running roxygen2 on (chunks of) a 
+This is exactly what this package is about: running roxygen2 on (chunks of) a
 single code file.
 
 ## Features
@@ -56,15 +56,6 @@ The plain text reads
 cat(readLines(d[["txt_path"]]), sep = "\n")
 ```
 
-```{r, echo = FALSE, results = "hide", message = FALSE}
-project_root <- rprojroot::find_root(rprojroot::is_r_package)
-d <- document::document(file_name = path,
-                        output_directory = file.path(project_root,
-                                                     "inst", "files"),
-                        check_package = FALSE)
-file.remove(unlist(d[c("txt_path", "pdf_path")]))
-```
-
 You can view a copy of the html file 
 [here](http://htmlpreview.github.io/?https://github.com/fvafrCU/document/blob/master/inst/tests/files/minimal.html). 
 The pdf file resembles a package's documentation pdf file.
@@ -102,14 +93,14 @@ cat(readLines(d[["txt_path"]]), sep = "\n")
 
 # Displaying Temporary Help Files
 ```{r, echo = FALSE}
-# owing to Dason Kurkiewicz <dasonk@gmail.com>, 
+# owing to Dason Kurkiewicz <dasonk@gmail.com>,
 # https://github.com/Dasonk/docstring
 # This is only needed for the vignette, you can skip the setting of the option
 # in regular use.
 pager_function <- function(x, ...) {
     x <- readLines(x)
     x <- gsub("_", "", x)
-    cat(paste(x, collapse="\n"), "\n")
+    cat(paste(x, collapse = "\n"), "\n")
 }
 options(pager = pager_function)
 ```

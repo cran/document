@@ -85,8 +85,8 @@ help("document-package", package = "document")
 #> 
 #> See Also:
 #> 
-#>      'docstring' (<URL: https://cran.r-project.org/package=docstring>)
-#>      also creates temporary help pages as well but using a different
+#>      'docstring' (<https://cran.r-project.org/package=docstring>) also
+#>      creates temporary help pages as well but using a different
 #>      technical approach (allowing you to view them in the 'RStudio'
 #>      help pane). But it creates them from python style 'docstring'-like
 #>      comments it then parses into 'roxygen2'. And it does not write to

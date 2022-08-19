@@ -348,7 +348,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">An Introduction to <em>document</em></h1>
 <h4 class="author">Andreas Dominik Cullmann</h4>
-<h4 class="date">2020-01-09, 22:23:13</h4>
+<h4 class="date">2022-08-17, 09:21:00</h4>
 
 
 
@@ -404,7 +404,8 @@ bar &lt;- function() {
 }</code></pre>
 <p>Then</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>d &lt;-<span class="st"> </span>document<span class="op">::</span><span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<pre><code>## Warning: roxygen2 requires Encoding: UTF-8</code></pre>
+<pre><code>## Warning: roxygen2 requires Encoding: &quot;UTF-8&quot;
+## ℹ Current encoding is NA</code></pre>
 <p>creates a Portable Document Format <a href="https://en.wikipedia.org/wiki/Portable_Document_Format">(pdf)</a> file, an Hypertext Markup Language <a href="https://en.wikipedia.org/wiki/HTML">(html)</a> file and a <a href="https://en.wikipedia.org/wiki/Plain_text">plain text</a> file. The plain text reads</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>Uhh
@@ -447,7 +448,6 @@ Examples:
 
      foo(x = 2)
      </code></pre>
-<pre><code>## Warning: roxygen2 requires Encoding: UTF-8</code></pre>
 <p>You can view a copy of the html file <a href="http://htmlpreview.github.io/?https://github.com/fvafrCU/document/blob/master/inst/tests/files/minimal.html">here</a>. The pdf file resembles a package’s documentation pdf file.</p>
 <div id="checking-the-code-with-r-cmd-check" class="section level3">
 <h3>Checking the code with R CMD check</h3>
@@ -463,8 +463,8 @@ cat(res[[&quot;check_result&quot;]][[&quot;output&quot;]][[&quot;stderr&quot;]],
 <div id="a-simple-example" class="section level2">
 <h2>A Simple Example</h2>
 <p>Suppose you have a script</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;simple.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(path), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;simple.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(path), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>#!/usr/bin/Rscript --vanilla
 #&#39; \emph{File} simple.R
 #&#39;
@@ -520,9 +520,10 @@ a_first_function(iris)
 
 #% Back Matter</code></pre>
 <p>Then you can write documentation using:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>d &lt;-<span class="st"> </span>document<span class="op">::</span><span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
-<pre><code>## Warning: roxygen2 requires Encoding: UTF-8</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>d &lt;-<span class="st"> </span>document<span class="op">::</span><span class="kw">document</span>(<span class="dt">file_name =</span> path, <span class="dt">check_package =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<pre><code>## Warning: roxygen2 requires Encoding: &quot;UTF-8&quot;
+## ℹ Current encoding is NA</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="kw">cat</span>(<span class="kw">readLines</span>(d[[<span class="st">&quot;txt_path&quot;</span>]]), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>_File_ simple.R
 
 Description:
@@ -569,8 +570,8 @@ Examples:
 <div id="displaying-temporary-help-files" class="section level1">
 <h1>Displaying Temporary Help Files</h1>
 <p>You can display the help page for one of the documented functions using</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>document<span class="op">::</span><span class="kw">man</span>(<span class="dt">x =</span> path, <span class="dt">topic =</span> <span class="st">&quot;foo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;files&quot;</span>, <span class="st">&quot;minimal.R&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;document&quot;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>document<span class="op">::</span><span class="kw">man</span>(<span class="dt">x =</span> path, <span class="dt">topic =</span> <span class="st">&quot;foo&quot;</span>)</span></code></pre></div>
 <pre><code>Nothing Good For
 
 Description:

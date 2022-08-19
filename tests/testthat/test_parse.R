@@ -1,7 +1,7 @@
 if (fritools::get_run_r_tests()) {
     library(testthat)
     if (interactive()) {
-        devtools::load_all()
+        pkgload::load_all()
     } else {
         library("document")
     }

@@ -148,9 +148,9 @@ write_the_docs <- function(package_directory, file_name = package_directory,
     rcmd_args <- c("--no-preview", "--internals", "--force",
                    paste0("--title=", pdf_title), paste0("--output=", pdf_path),
                    man_directory)
-    call_pdf <- withr::with_dir(output_directory,
-                                callr::rcmd_safe("Rd2pdf", rcmd_args)
-                                )
+    call_pdf <- fritools::with_dir(output_directory,
+                                   callr::rcmd_safe("Rd2pdf", rcmd_args)
+                                   )
     if (! as.logical(call_pdf[["status"]])) status[["pdf_path"]]  <- pdf_path
     files  <- sort_unlocale(list.files(man_directory, full.names = TRUE))
     call_html <- lapply(files,
