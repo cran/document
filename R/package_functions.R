@@ -6,12 +6,14 @@
 #' @param dependencies A character vector of package names the functions depend
 #' on.
 #' @param working_directory A working directory. Keep the default.
-#' @param ... Arguments passed to \code{\link{get_lines_between_tags}}.
+#' @param ... Arguments passed to
+#' \code{\link[fritools:get_lines_between_tags]{get_lines_between_tags}}.
 #' @return A string containing the path to the faked package.
 #' @keywords internal
-#' @examples
-#' document:::fake_package(file_name = system.file("files", "simple.R",
-#'          package = "document"))
+# CRAN complains about examples for internal functions
+# #' @examples
+# #' document:::fake_package(file_name = system.file("files", "simple.R",
+# #'          package = "document"))
 fake_package <- function(file_name, working_directory = NULL,
                          dependencies = NULL, ...) {
     checkmate::assertCharacter(dependencies, null.ok = TRUE)
@@ -26,7 +28,7 @@ fake_package <- function(file_name, working_directory = NULL,
     package_directory <- file.path(working_directory, package_name)
     man_directory <- file.path(package_directory, "man")
     dir.create(working_directory, showWarnings = FALSE, recursive = TRUE)
-    roxygen_code <- get_lines_between_tags(file_name, ...)
+    roxygen_code <- fritools::get_lines_between_tags(file_name, ...)
     if (is.null(roxygen_code) || ! any(grepl("^#+'", roxygen_code))) {
         warning("Couldn't find roxygen comments in file ", file_name, ".")
     }

@@ -23,7 +23,4 @@ Throws a condition of class c("document", "error", "condition").
 \details{
 We use this condition as an error dedicated to \pkg{document}.
 }
-\examples{
-tryCatch(document:::throw("Hello error!"), error = function(e) return(e))
-}
 \keyword{internal}

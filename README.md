@@ -1,11 +1,11 @@
 ---
 output: github_document
 ---
-[![pipeline status](https://gitlab.com/fvafrCU/document/badges/master/pipeline.svg)](https://gitlab.com/fvafrCU/document/-/commits/master)    
-[![coverage report](https://gitlab.com/fvafrCU/document/badges/master/coverage.svg)](https://gitlab.com/fvafrCU/document/-/commits/master)
+[![pipeline status](https://gitlab.com/fvafrcu/document/badges/master/pipeline.svg)](https://gitlab.com/fvafrcu/document/-/commits/master)    
+[![coverage report](https://gitlab.com/fvafrcu/document/badges/master/coverage.svg)](https://gitlab.com/fvafrcu/document/-/commits/master)
 <!-- 
-    [![Build Status](https://travis-ci.org/fvafrCU/document.svg?branch=master)](https://travis-ci.org/fvafrCU/document)
-    [![Coverage Status](https://codecov.io/github/fvafrCU/document/coverage.svg?branch=master)](https://codecov.io/github/fvafrCU/document?branch=master)
+    [![Build Status](https://travis-ci.org/fvafrcu/document.svg?branch=master)](https://travis-ci.org/fvafrcu/document)
+    [![Coverage Status](https://codecov.io/github/fvafrcu/document/coverage.svg?branch=master)](https://codecov.io/github/fvafrcu/document?branch=master)
 -->
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/document)](https://cran.r-project.org/package=document)
 [![RStudio_downloads_monthly](https://cranlogs.r-pkg.org/badges/document)](https://cran.r-project.org/package=document)
@@ -17,9 +17,12 @@ output: github_document
 
 # document
 ## Introduction
-Please read the
-[vignette](https://CRAN.R-project.org/package=document/vignettes/Introduction_to_document.html).
-Or, after installation, the help page:
+After installation, please read the vignette
+
+```r
+vignette("Introduction_to_document", package = "document")
+```
+or the help page:
 
 ```r
 help("document-package", package = "document")
@@ -100,7 +103,7 @@ You can install document from github with:
 
 ```r
 if (! require("remotes")) install.packages("remotes")
-remotes::install_gitlab("fvafrCU/document")
+remotes::install_gitlab("fvafrcu/document")
 ```
 
 

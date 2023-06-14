@@ -1,3 +1,10 @@
+# document 4.0.0
+
+* Removed examples for internal functions from the internal documentation (as
+  requested by CRAN).
+* Fixed broken links in README.Rmd and DESCRIPTION.
+* Moved `get_lines_between_tags()` to package *fritools*.
+
 # document 3.3.4
 
 * Using suggested packages conditionally only.

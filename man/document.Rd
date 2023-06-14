@@ -48,7 +48,8 @@ Do not bother, this is for Unit testing only.}
 
 \item{debug}{For internal use only: Summarize errors for \command{travis}?}
 
-\item{...}{Arguments passed to \code{\link{get_lines_between_tags}}.}
+\item{...}{Arguments passed to
+\code{\link[fritools:get_lines_between_tags]{get_lines_between_tags}}.}
 }
 \value{
 A list containing

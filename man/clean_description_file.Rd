@@ -16,13 +16,4 @@ Invisibly NULL.
 \code{utils::\link[utils]{package.skeleton}} leaves us with a DESCRIPTION
 that throws a warning in \command{R CMD check}. Fix that.
 }
-\examples{
-if (! exists("dummy")) assign("dummy", "dumb")
-utils::package.skeleton(path = tempdir())
-old <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
-document:::clean_description_file(path = file.path(tempdir(), "anRpackage",
-                                        "DESCRIPTION"))
-new <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
-setdiff(new, old)
-}
 \keyword{internal}

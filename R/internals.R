@@ -10,8 +10,9 @@
 #' @return FALSE. But it does not return anything, it stops with a
 #' condition of class c("document", "error", "condition").
 #' @keywords internal
-#' @examples
-#' tryCatch(document:::throw("Hello error!"), error = function(e) return(e))
+# CRAN complains about examples for internal functions
+# #' @examples
+# #' tryCatch(document:::throw("Hello error!"), error = function(e) return(e))
 throw <- function(message_string, system_call = sys.call(-1), ...) {
     checkmate::qassert(message_string, "s*")
     condition <- structure(
@@ -34,8 +35,9 @@ throw <- function(message_string, system_call = sys.call(-1), ...) {
 #' @param ... Arguments to be passed to \code{\link{structure}}.
 #' @return The condition.
 #' @keywords internal
-#' @examples
-#' tryCatch(document:::warn("Hello error!"), error = function(e) return(e))
+# CRAN complains about examples for internal functions
+# #' @examples
+# #' tryCatch(document:::warn("Hello error!"), error = function(e) return(e))
 warn <- function(message_string, system_call = sys.call(-1), ...) {
     checkmate::qassert(message_string, "s*")
     condition <- structure(

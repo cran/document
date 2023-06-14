@@ -14,7 +14,8 @@ fake_package(file_name, working_directory = NULL, dependencies = NULL, ...)
 \item{dependencies}{A character vector of package names the functions depend
 on.}
 
-\item{...}{Arguments passed to \code{\link{get_lines_between_tags}}.}
+\item{...}{Arguments passed to
+\code{\link[fritools:get_lines_between_tags]{get_lines_between_tags}}.}
 }
 \value{
 A string containing the path to the faked package.
@@ -22,9 +23,5 @@ A string containing the path to the faked package.
 \description{
 To build documentation for a single code file, we need a temporary package.
 Of course the code file should contain \pkg{roxygen2} comments.
-}
-\examples{
-document:::fake_package(file_name = system.file("files", "simple.R",
-         package = "document"))
 }
 \keyword{internal}

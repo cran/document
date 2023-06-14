@@ -6,7 +6,7 @@ if (fritools::get_run_r_tests()) {
     } else {
         library("document")
     }
-    glbt <- document:::get_lines_between_tags
+    glbt <- fritools::get_lines_between_tags
     ratio <- 0.3
 
     context("files")

@@ -22,7 +22,4 @@ Throws a condition of class c("document", "warning", "condition").
 \details{
 We use this condition as a warning dedicated to \pkg{document}.
 }
-\examples{
-tryCatch(document:::warn("Hello error!"), error = function(e) return(e))
-}
 \keyword{internal}

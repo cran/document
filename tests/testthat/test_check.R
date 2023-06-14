@@ -12,7 +12,7 @@ if (fritools::get_run_r_tests()) {
         return(r)
     }
 
-    glbt <- document:::get_lines_between_tags
+    glbt <- fritools::get_lines_between_tags
 
     context("checking the package")
     context("not stopping on errors")

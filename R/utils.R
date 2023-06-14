@@ -60,14 +60,15 @@ alter_description_file <- function(path, substitution = NULL, addition = NULL) {
 #' @param path Path to the DESCRIPTION file or the directory containing it.
 #' @return Invisibly NULL.
 #' @keywords internal
-#' @examples
-#' if (! exists("dummy")) assign("dummy", "dumb")
-#' utils::package.skeleton(path = tempdir())
-#' old <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
-#' document:::clean_description_file(path = file.path(tempdir(), "anRpackage",
-#'                                         "DESCRIPTION"))
-#' new <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
-#' setdiff(new, old)
+# CRAN complains about examples for internal functions
+# #' @examples
+# #' if (! exists("dummy")) assign("dummy", "dumb")
+# #' utils::package.skeleton(path = tempdir())
+# #' old <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
+# #' document:::clean_description_file(path = file.path(tempdir(), "anRpackage",
+# #'                                         "DESCRIPTION"))
+# #' new <- readLines(file.path(tempdir(), "anRpackage", "DESCRIPTION"))
+# #' setdiff(new, old)
 clean_description_file <- function(path) {
     d <- desc::description$new(path)
     d$set(Version = "2.0.0",

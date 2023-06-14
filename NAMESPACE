@@ -2,6 +2,5 @@
 
 export(document)
 export(get_dpd)
-export(get_lines_between_tags)
 export(man)
 export(usage)
