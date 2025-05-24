@@ -65,4 +65,8 @@ view them in the \code{RStudio} help pane). But it creates them from python
 style \command{docstring}-like comments it then parses into \pkg{roxygen2}.
 And it does not write to file so far.
 }
+\author{
+\strong{Maintainer}: Andreas Dominik Cullmann \email{fvafrcu@mailbox.org}
+
+}
 \keyword{package}

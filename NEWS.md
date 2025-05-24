@@ -1,3 +1,7 @@
+# document 4.0.1
+
+* Fix missing package anchors in documentation as reported by CRAN.
+
 # document 4.0.0
 
 * Removed examples for internal functions from the internal documentation (as

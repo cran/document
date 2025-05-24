@@ -49,15 +49,16 @@ warn <- function(message_string, system_call = sys.call(-1), ...) {
     return(condition)
 }
 
-#' Are There Errors, Warnings or Notes From \code{\link{rcmdcheck}}?
+#' Get Warnings or Notes From \code{\link[rcmdcheck]{rcmdcheck}}
 #'
-#' \code{\link{rcmdcheck}} returns a list containing characters that give
-#' errors, warnings and notes.
+#' \code{\link[rcmdcheck]{rcmdcheck}} returns a list containing characters
+#' that give errors, warnings and notes.
 #'
 #' Use \code{! any(checks(x)))} to ensure there were no errors, warnings or
 #' notes in \code{x}.
 #'
-#' @param rcmdcheck_value The return value of \code{\link{rcmdcheck}}.
+#' @param rcmdcheck_value The return value of
+#' \code{\link[rcmdcheck]{rcmdcheck}}.
 #' @return A named logical vector, all \code{\link[base:logical]{FALSE}} if
 #' there were no errors, warnings or notes.
 #' @keywords internal
